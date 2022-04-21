@@ -164,18 +164,18 @@ public class CnCreation extends BaseClass {
         //  Assert.assertEquals(cnote, CNOte);
     }
 
-    @Test(priority = 3)
-    public void markedReached() {
-        //Marked CN's reached on OU
-        test = extent.createTest("markedReached");
-        String bearertoken = "Bearer " + accessToken;
-        RestAssured.baseURI = baseURL;
-        given().queryParam("prsId", prsID).header("Authorization", bearertoken)
-                .when().put("/backend/operations/pickupRunSheet/markReached")
-                .then().log().all().assertThat().statusCode(200).body("status", equalTo("SUCCESS"));
-
-
-    }
+//    @Test(priority = 3)
+//    public void markedReached() {
+//        //Marked CN's reached on OU
+//        test = extent.createTest("markedReached");
+//        String bearertoken = "Bearer " + accessToken;
+//        RestAssured.baseURI = baseURL;
+//        given().queryParam("prsId", prsID).header("Authorization", bearertoken)
+//                .when().put("/backend/operations/pickupRunSheet/markReached")
+//                .then().log().all().assertThat().statusCode(200).body("status", equalTo("SUCCESS"));
+//
+//
+//    }
     @Test(priority = 4)
     public void prsUnloading(){
         //Unloading of CN (Assign to PA/OA)
