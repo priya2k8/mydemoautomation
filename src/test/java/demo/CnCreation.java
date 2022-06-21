@@ -50,8 +50,8 @@ public class CnCreation extends BaseClass {
         String bearertoken = "Bearer " + accessToken;
         String fromAddress = given().log().all().header("Authorization", bearertoken)
                 .header("Content-Type", "application/json")
-                .body(Payload.BikeCN())
-               // .body(Payload.RetailNormalCN())
+             //   .body(Payload.BikeCN())
+               .body(Payload.RetailNormalCN())
                // .body(Payload.CorporateCN())
                 .when().post("/backend/operations/consignments")
                 .then().assertThat().log().all().statusCode(200).extract().response().asString();
@@ -69,39 +69,39 @@ public class CnCreation extends BaseClass {
         //  Assert.assertEquals(cnote, CNOte);
         test.log(Status.INFO, "Creating Trip");
     }
-    //    @Test(priority = 3)
-//    public void markedReached() {
-//        //Marked CN's reached on OU
-//        test = extent.createTest("markedReached");
-//        String bearertoken = "Bearer " + accessToken;
-//        RestAssured.baseURI = baseURL;
-//        given().queryParam("prsId", prsID).header("Authorization", bearertoken)
-//                .when().put("backend/operations/pickupRunSheet/markReached")
-//                .then().log().all().assertThat().statusCode(200).extract().response().asString();
-//    }
-//    @Test(priority = 4)
-//    public void prsUnloading() {
-//        //Unloading of CN (Assign to PA/OA)
-//        test = extent.createTest("prsUnloading");
-//        String bearertoken = "Bearer " + accessToken;
-//        RestAssured.baseURI = baseURL;
-//        given().log().all().queryParam("prsId", prsID).header("Authorization", bearertoken)
-//                .header("Content-Type", "application/json")
-//                .header("Accept", "*/*")
-//                .header("User-Agent", "PostmanRuntime/7.28.4")
-//                .header("accept-encoding", "gzip, deflate, br")
-//                .body("{\n" +
-//                        "    \"vehicleNumber\": \"" + vehicleNO + "\",\n" +
-//                        "    \"prsId\": " + prsID + ",\n" +
-//                        "    \"taskUserEmailMap\": {\n" +
-//                        "        \"PA\": [\n" +
-//                        "            \"smoke_oadelt1@rivigo.com\"\n" +
-//                        "        ],\n" +
-//                        "        \"OA\": []\n" +
-//                        "    },\n" +
-//                        "    \"dockNumber\": \"1\"\n" +
-//                        "}")
-//                .when().put("/backend/operations/pickupRunSheet/assignUnloading")
-//                .then().log().all().assertThat().statusCode(200).extract().response().asString();
-//    }
+        @Test(priority = 3)
+    public void markedReached() {
+        //Marked CN's reached on OU
+        test = extent.createTest("markedReached");
+        String bearertoken = "Bearer " + accessToken;
+        RestAssured.baseURI = baseURL;
+        given().queryParam("prsId", prsID).header("Authorization", bearertoken)
+                .when().put("backend/operations/pickupRunSheet/markReached")
+                .then().log().all().assertThat().statusCode(200).extract().response().asString();
+    }
+    @Test(priority = 4)
+    public void prsUnloading() {
+        //Unloading of CN (Assign to PA/OA)
+        test = extent.createTest("prsUnloading");
+        String bearertoken = "Bearer " + accessToken;
+        RestAssured.baseURI = baseURL;
+        given().log().all().queryParam("prsId", prsID).header("Authorization", bearertoken)
+                .header("Content-Type", "application/json")
+                .header("Accept", "*/*")
+                .header("User-Agent", "PostmanRuntime/7.28.4")
+                .header("accept-encoding", "gzip, deflate, br")
+                .body("{\n" +
+                        "    \"vehicleNumber\": \"" + vehicleNO + "\",\n" +
+                        "    \"prsId\": " + prsID + ",\n" +
+                        "    \"taskUserEmailMap\": {\n" +
+                        "        \"PA\": [\n" +
+                        "            \"smoke_oadelt1@rivigo.com\"\n" +
+                        "        ],\n" +
+                        "        \"OA\": []\n" +
+                        "    },\n" +
+                        "    \"dockNumber\": \"1\"\n" +
+                        "}")
+                .when().put("/backend/operations/pickupRunSheet/assignUnloading")
+                .then().log().all().assertThat().statusCode(200).extract().response().asString();
+    }
     }

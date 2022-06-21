@@ -400,8 +400,8 @@ public class Payload extends BaseClass {
                 "    \"packing\": \"Carton\",\n" +
                 "    \"barcodeType\": \"PRE_PRINTED\",\n" +
                 "    \"barcodes\": [\n" +
-                "        \" "+InsertCNote()+"\"\n" +
-                "    ],\n" +
+              "        " + cnotebarcode + "\n" +
+              "    ],\n" +
                 "    \"isDacc\": false,\n" +
                 "    \"invoices\": [\n" +
                 "        {\n" +
